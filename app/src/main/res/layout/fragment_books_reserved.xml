@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reserves_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.booksreserved.BooksReservedFragment">
+
+    <TextView
+        android:id="@+id/reserve_label"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/reserves_label_height"
+        android:layout_marginBottom="@dimen/reserves_label_margin_bottom"
+        android:gravity="center"
+        android:text="@string/mis_reservas"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="@dimen/reserve_label_text_size" />
+
+    <TextView
+        android:id="@+id/reserve_list_empty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/reserve_list_text_size"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/reserves_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        tools:listitem="@layout/item_reserve" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar_reserves"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="6"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+</LinearLayout>

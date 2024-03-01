@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/homeListFragment">
+
+    <fragment
+        android:id="@+id/homeListFragment"
+        android:name="com.matiasmandelbaum.alejandriaapp.ui.home.HomeListFragment"
+        android:label="@string/inicio"
+        tools:layout="@layout/fragment_home_list">
+        <action
+            android:id="@+id/action_homeListFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeListFragment_to_bookDetailsFragment"
+            app:destination="@id/bookDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.matiasmandelbaum.alejandriaapp.ui.search.SearchFragment"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_searchResultListFragment"
+            app:destination="@id/searchResultListFragment"
+            app:popUpTo="@id/homeListFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchResultListFragment"
+        android:name="com.matiasmandelbaum.alejandriaapp.ui.searchresult.SearchResultListFragment"
+        android:label="Resultado"
+        tools:layout="@layout/fragment_search_result_list">
+
+        <argument
+            android:name="titulo"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_searchResultListFragment_to_bookDetailsFragment"
+            app:destination="@id/bookDetailsFragment" />
+        <action
+            android:id="@+id/action_searchResultListFragment_to_bookDetailsFragment2"
+            app:destination="@id/bookDetailsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/subscriptionListFragment"
+        android:name="com.matiasmandelbaum.alejandriaapp.ui.subscription.SubscriptionListFragment"
+        android:label="@string/suscripcion"
+        tools:layout="@layout/fragment_subscription_list" />
+
+    <fragment
+        android:id="@+id/reservedBooksFragment"
+        android:name="com.matiasmandelbaum.alejandriaapp.ui.booksreserved.BooksReservedFragment"
+        android:label="@string/reservas"
+        tools:layout="@layout/fragment_books_reserved" />
+
+    <fragment
+        android:id="@+id/bookDetailsFragment"
+        android:name="com.matiasmandelbaum.alejandriaapp.ui.booksdetails.BooksDetailFragment"
+        android:label="Detalles"
+        tools:layout="@layout/fragment_books_details">
+
+        <argument
+            android:name="book"
+            app:argType="com.matiasmandelbaum.alejandriaapp.domain.model.book.Book" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.matiasmandelbaum.alejandriaapp.ui.signin.SignInFragment"
+        android:label="@string/registro"
+        tools:layout="@layout/fragment_signin">
+        <action
+            android:id="@+id/action_signInFragment_to_homeListFragment"
+            app:destination="@id/homeListFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.matiasmandelbaum.alejandriaapp.ui.login.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_homeListFragment"
+            app:destination="@id/homeListFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/passwordRecoveryFragment"
+        android:name="com.matiasmandelbaum.alejandriaapp.ui.passwordrecovery.PasswordRecoveryFragment"
+        android:label="PasswordRecoveryFragment"
+        tools:layout="@layout/fragment_password_recovery">
+        <action
+            android:id="@+id/action_passwordRecoveryFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </dialog>
+
+    <dialog
+        android:id="@+id/signOutDialogFragment"
+        android:name="com.matiasmandelbaum.alejandriaapp.ui.signout.SignOutDialogFragment"
+        android:label="SignoutDialogFragment"
+        tools:layout="@layout/activity_main">
+        <action
+            android:id="@+id/action_signOutDialogFragment_pop2"
+            app:popUpTo="@id/signOutDialogFragment"
+            app:popUpToInclusive="true" />
+    </dialog>
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.matiasmandelbaum.alejandriaapp.ui.userprofilemain.UserProfileFragment"
+        android:label="@string/Perfil"
+        tools:layout="@layout/user_profile"/>
+
+    <fragment
+        android:id="@+id/changeProfileImageFragment"
+        android:name="com.matiasmandelbaum.alejandriaapp.ui.userprofileimage.UserImageFragment"
+        android:label="@string/cambio_de_imagen"
+        tools:layout="@layout/user_profile_picture_change" />
+
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.matiasmandelbaum.alejandriaapp.ui.settings.SettingsFragment"
+        android:label="@string/configuracion"
+        tools:layout="@layout/settings_activity"/>
+</navigation>

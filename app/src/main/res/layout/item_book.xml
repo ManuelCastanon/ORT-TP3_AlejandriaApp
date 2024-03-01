@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="book"
+            type="com.matiasmandelbaum.alejandriaapp.domain.model.book.Book" />
+
+        <variable
+            name="clickListener"
+            type="com.matiasmandelbaum.alejandriaapp.ui.adapter.BookListener" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_book_layout_card_height"
+            android:layout_marginTop="@dimen/item_book_margin_small_2"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="@{() -> clickListener.onClick(book)}"
+            app:cardCornerRadius="@dimen/item_book_card_corner_radius"
+            app:cardElevation="@dimen/item_book_card_elevation"
+            app:cardPreventCornerOverlap="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/vertical_guide_line_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="@dimen/guideline_30" />
+
+                <ImageView
+                    android:id="@+id/book_small_thumbnail"
+                    android:layout_width="@dimen/item_book_image_width"
+                    android:layout_height="@dimen/item_book_image_height"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/vertical_guide_line_1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/ic_menu_book"/>
+
+                <TextView
+                    android:id="@+id/book_name_text_view"
+                    tools:text="@string/un_libro_para_leer"
+                    android:layout_width="@dimen/item_book_text_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/item_book_margin_small_2"
+                    android:layout_marginTop="@dimen/item_book_margin_medium"
+                    android:adjustViewBounds="true"
+                    android:maxLines="2"
+                    android:textColor="?attr/colorPrimary"
+                    android:textSize="@dimen/item_book_text_size_medium"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.421"
+                    app:layout_constraintStart_toStartOf="@+id/vertical_guide_line_1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/publisher_name_text_view"
+                    android:layout_width="@dimen/item_book_text_width"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/item_book_margin_small_2"
+                    android:layout_marginTop="@dimen/item_book_margin_big"
+                    android:adjustViewBounds="true"
+                    android:singleLine="true"
+                    android:textColor="?attr/colorSecondary"
+                    android:textSize="@dimen/item_book_text_size_small"
+                    tools:text="@string/un_autor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/vertical_guide_line_1"
+                    app:layout_constraintTop_toBottomOf="@+id/book_name_text_view" />
+
+                <RatingBar
+                    android:id="@+id/barraPuntaje"
+                    android:layout_width="@dimen/item_book_rating_width"
+                    android:layout_height="@dimen/item_book_rating_height"
+                    android:layout_marginBottom="@dimen/item_book_margin_small_1"
+                    android:isIndicator="true"
+                    android:scaleX="@dimen/guideline_75"
+                    android:scaleY="@dimen/guideline_75"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/vertical_guide_line_1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+</layout>
